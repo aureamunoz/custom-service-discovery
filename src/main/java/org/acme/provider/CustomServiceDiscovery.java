@@ -12,19 +12,12 @@ import java.util.Map;
 
 public class CustomServiceDiscovery implements ServiceDiscovery {
 
-//    private final String host;
-//    private final int port;
 
     public CustomServiceDiscovery() {
-//        this.host = configuration.get("host");
-//        this.port = Integer.parseInt(configuration.get("port"));
     }
 
     @Override
     public Uni<List<ServiceInstance>> getServiceInstances() {
-        // Proceed to the lookup...
-        // Here, we just return a DefaultServiceInstance with the configured host and port
-        // The last parameter specifies whether the communication with the instance should happen over a secure connection
         DefaultServiceInstance instance =
                 new DefaultServiceInstance(ServiceInstanceIds.next(), "localhost", 9090, false);
         return Uni.createFrom().item(() -> Collections.singletonList(instance));
